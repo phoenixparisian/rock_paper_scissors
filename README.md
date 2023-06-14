@@ -1,2 +1,3 @@
 # rock_paper_scissors
-TheOdinProject 
+Rock paper scissors game where the player plays against the computer.
+From The Odin Project foundations course
