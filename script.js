@@ -1,5 +1,3 @@
-const selections = ["Rock", "Paper", "Scissors"];
-
 // DOM elements
 const main = document.querySelector("main");
 const buttons = document.querySelectorAll(".choice-btn");
@@ -9,24 +7,22 @@ const computerChoiceText = document.querySelector("#computer-choice");
 const roundOutcomeText = document.querySelector("#round-outcome");
 const totalText = document.querySelector("#total-score");
 
-
 const winHTML = "<p> You Won! <p>"
 const lossHTML = "<p> Game over. You lost.<p>"
+
 
 let roundCount = 0;
 let playerScore = 0;
 let computerScore = 0;
 
-let computerSelection;
-let playerSelection;
-
-
 function getComputerChoice() {
+  const selections = ["Rock", "Paper", "Scissors"];
   const randomChoice = selections[Math.floor(Math.random() * selections.length)];
   return randomChoice;
 }
 
 function playRound(playerSelection, computerSelection) {
+
   let outcome;
 
   if (playerSelection == "Rock") {
@@ -72,18 +68,17 @@ function playRound(playerSelection, computerSelection) {
     main.innerHTML = lossHTML;
   }
 
-
   roundOutcomeText.textContent = "Outcome: " + outcome;
 
   totalText.textContent = "Player: " + playerScore + " Computer: " + computerScore;
-
-
 }
 
 
 function playGame(event) {
   roundCount++;
   roundNumText.textContent = "Round " + roundCount;
+
+  let playerSelection;
 
   const btnId = event.target.id;
 
@@ -97,20 +92,13 @@ function playGame(event) {
     playerSelection = "Scissors";
   }
 
-  computerSelection = getComputerChoice();
+  let computerSelection = getComputerChoice();
 
   playerChoiceText.textContent = "Your Selection: " + playerSelection;
   computerChoiceText.textContent = "Computer's Selection: " + computerSelection;
 
-
-
   playRound(playerSelection, computerSelection);
-
-
-
-
 }
-
 
 buttons.forEach((button) => {
   button.addEventListener("click", playGame)
